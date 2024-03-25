@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "c0e58e4c-b9ed-4678-93be-a3289d3ba113",
+		"name": "ServiceNowFeb2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24504882",
+		"_collection_link": "https://bold-eclipse-217602.postman.co/workspace/Playwright-API~1274f961-fd8e-423d-86b4-9cea498d4a2b/collection/24504882-c0e58e4c-b9ed-4678-93be-a3289d3ba113?action=share&source=collection_link&creator=24504882"
+	},
+	"item": [
+		{
+			"name": "create incident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"INC\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Get the complete JSON response\r",
+							"\r",
+							"// Use the JSON path to get the value and save it to Sys_id\r",
+							"\r",
+							"Resp = pm.response.json();\r",
+							"\r",
+							"Sys_id = Resp.result.sys_id;\r",
+							"\r",
+							"// Save it to the Global Variable\r",
+							"\r",
+							"pm.globals.set(\"G_Sysid\" , Sys_id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "5lr8LUN!g+bM",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Windows OS issue\",\r\n    \"description\": \"Lenevo Think Pad \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev201012.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev201012",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditIncident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"INC\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Get the complete JSON response\r",
+							"\r",
+							"// Use the JSON path to get the value and save it to Sys_id\r",
+							"\r",
+							"Resp = pm.response.json();\r",
+							"\r",
+							"Sys_id = Resp.result.sys_id;\r",
+							"\r",
+							"// Save it to the Global Variable\r",
+							"\r",
+							"pm.globals.set(\"G_Sysid\" , Sys_id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "5lr8LUN!g+bM",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Windows OS issue\",\r\n    \"description\": \"MacBook Pro \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev201012.service-now.com//api/now/table/incident/{{G_Sysid}}",
+					"protocol": "https",
+					"host": [
+						"dev201012",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"",
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{G_Sysid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditIncident Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201,200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"INC\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Get the complete JSON response\r",
+							"\r",
+							"// Use the JSON path to get the value and save it to Sys_id\r",
+							"\r",
+							"Resp = pm.response.json();\r",
+							"\r",
+							"Sys_id = Resp.result.sys_id;\r",
+							"\r",
+							"// Save it to the Global Variable\r",
+							"\r",
+							"pm.globals.set(\"G_Sysid\" , Sys_id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "5lr8LUN!g+bM",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Windows OS issue\",\r\n    \"description\": \"MacBook Pro \",\r\n    \"business_impact\": \"Dev Team\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev201012.service-now.com//api/now/table/incident/{{G_Sysid}}",
+					"protocol": "https",
+					"host": [
+						"dev201012",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"",
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{G_Sysid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "5lr8LUN!g+bM",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev201012.service-now.com//api/now/table/incident/{{G_Sysid}}",
+					"protocol": "https",
+					"host": [
+						"dev201012",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"",
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{G_Sysid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "5lr8LUN!g+bM",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev201012.service-now.com//api/now/table/incident/{{G_Sysid}}",
+					"protocol": "https",
+					"host": [
+						"dev201012",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"",
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{G_Sysid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "tzof8Z!1N@HE",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ServiceNowEnv",
+			"value": "dev198859.service-now.com"
+		}
+	]
+}
